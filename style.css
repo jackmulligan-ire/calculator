@@ -1,0 +1,27 @@
+#shell {
+    background-color: cadetblue;
+    height: 250px;
+    width: 250px;
+}
+
+#display {
+    background-color: lightyellow;
+    height: 20%;
+    width: 95%;
+}
+
+#buttons {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: lightsalmon;
+    height: 70%;
+    width: 95%;
+}
+
+.button {
+    flex: 25%;
+}
+
+#zero-button {
+    flex: 50%;
+}
