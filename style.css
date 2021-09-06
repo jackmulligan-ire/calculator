@@ -1,27 +1,40 @@
 #shell {
+    height: 350px;
+    width: 400px;
+    padding: 10px;
+    margin: auto;
     background-color: cadetblue;
-    height: 250px;
-    width: 250px;
 }
 
 #display {
+    height: 15%;
+    width: 90%;
+    margin: 5px auto;
+    padding: 0 5px;
     background-color: lightyellow;
-    height: 20%;
-    width: 95%;
+    text-align: end;
+    font-size: 45px;
 }
 
 #buttons {
     display: flex;
     flex-wrap: wrap;
-    background-color: lightsalmon;
-    height: 70%;
+    height: 78%;
     width: 95%;
+    margin: auto;
+    margin-top: 15px;
+    background-color: lightsalmon;
+    font-size: 45px;
+    text-align: center;
 }
 
 .button {
-    flex: 25%;
+    flex: 20%;
+    margin: 5px;
+    background-color: #a17aff;
+    border: 1px solid darkgreen;
 }
 
 #zero-button {
-    flex: 50%;
+    flex: 45%;
 }
