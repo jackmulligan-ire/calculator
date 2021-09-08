@@ -7,7 +7,9 @@ const multiplyButton = document.querySelector("#multiply");
 const divideButton = document.querySelector("#divide");
 const equalsButton = document.querySelector("#equals")
 
-let num1, currentOperation, num2;
+let num1, currentOperation, num2; 
+//Define an array called activeKeystrokes.
+let activeKeystrokes = [];
 
 const plus = (a,b) => a + b;
 const subtract = (a,b) => a - b;
@@ -23,16 +25,30 @@ const storeToMemory = (operation) => {
         result = operate(num1, currentOperation, num2);
         // Take result of the operation and store it in num 1
         num1 = result;
+        // Update display to be num1
+        display.textContent = num1;
     }
     // if num 1 IS undefined store num1 from the display
-    else if (num1 === undefined) num1 = +display.textContent;
-    display.textContent = "";
+    else if (num1 === undefined) {
+        num1 = +display.textContent;
+        // NEW CODE: set wipeEnabled = false
+        wipeEnabled = false;
+    }
     currentOperation = operation;
+    // Wipe activeKeystrokes
+    activeKeystrokes = [];
 };
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
+        // If the content of the display is the same as num1
+        // Update if block so that activeKeystrokes has to be emptied
+        if (+display.textContent === num1 && activeKeystrokes.length === 0) {
+            display.textContent = ""
+        }
         display.textContent += button.textContent;
+        // Entry added to the activeKeystrokes array
+        activeKeystrokes.push(button.textContent);
     })
 })
 plusButton.addEventListener('click', () => storeToMemory(plus))
@@ -47,6 +63,8 @@ equalsButton.addEventListener('click', () => {
     // Let the display show the result
     display.textContent = result;
     num1 = result; // Storing if user performing new operation with result
+    // Wipe activeKeystrokes
+    activeKeystrokes = [];
 
 })
 clearButton.addEventListener('click', () => {
