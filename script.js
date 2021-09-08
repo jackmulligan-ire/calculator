@@ -14,7 +14,10 @@ let operationFrozen = false;
 const plus = (a,b) => a + b;
 const subtract = (a,b) => a - b;
 const multiply = (a,b) => a * b;
-const divide = (a,b) => (a / b).toFixed(2);
+const divide = (a,b) => {
+    if (a % b === 0) return a / b
+    else return (a / b).toFixed(2)   
+};
 const operate = (a, operator, b) => operator(a,b);
 const storeToMemory = (operation) => {
     if (num1 != undefined && num1 != +display.textContent) { //Chaining operations
