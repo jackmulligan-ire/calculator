@@ -31,8 +31,6 @@ const storeToMemory = (operation) => {
     // if num 1 IS undefined store num1 from the display
     else if (num1 === undefined) {
         num1 = +display.textContent;
-        // NEW CODE: set wipeEnabled = false
-        wipeEnabled = false;
     }
     currentOperation = operation;
     // Wipe activeKeystrokes
