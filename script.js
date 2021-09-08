@@ -18,15 +18,19 @@ const divide = (a,b) => (a / b).toFixed(2);
 const operate = (a, operator, b) => operator(a,b);
 const storeToMemory = (operation) => {
     if (num1 != undefined && num1 != +display.textContent) { //Chaining operations
-        num2 = +display.textContent;
-        result = operate(num1, currentOperation, num2);
-        operationFrozen = true;
+        result = performCalculation(num1);
         num1 = result; // For new calc after equals pressed
-        display.textContent = num1;
     }
     else if (num1 === undefined) num1 = +display.textContent; //Very first number
     currentOperation = operation;
     activeKeystrokes = [];
+};
+const performCalculation = (num1) => {
+    num2 = +display.textContent;
+    result = operate(num1, currentOperation, num2);
+    display.textContent = result;
+    operationFrozen = true;
+    return result;
 };
 
 numberButtons.forEach(button => {
@@ -51,22 +55,17 @@ plusButton.addEventListener('click', () => storeToMemory(plus))
 subtractButton.addEventListener('click', () => storeToMemory(subtract))
 multiplyButton.addEventListener('click', () => storeToMemory(multiply))
 divideButton.addEventListener('click', () => storeToMemory(divide))
-
 equalsButton.addEventListener('click', () => {
     if (num1 === undefined) {
         num1 = "Error";
         display.textContent = num1;
     }
     else if (operationFrozen === false) {
-        num2 = +display.textContent
-        result = operate(num1, currentOperation, num2);
-        operationFrozen = true;
-        display.textContent = result;
-        num1 = result; // For new calc after equals pressed
+        result = performCalculation(num1);
+        num1 = result; // If user performs new operation
     }
     activeKeystrokes = [];
 })
-
 clearButton.addEventListener('click', () => {
     display.textContent = "";
     num1 = undefined;
