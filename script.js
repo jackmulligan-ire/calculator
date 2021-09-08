@@ -23,8 +23,7 @@ const storeToMemory = (operation) => {
     if (num1 != undefined && num1 != +display.textContent) { //Chaining operations
         result = performCalculation(num1);
         num1 = result; // For new calc after equals pressed
-    }
-    else if (num1 === undefined) num1 = +display.textContent; //Very first number
+    } else if (num1 === undefined) num1 = +display.textContent; //Very first number
     currentOperation = operation;
     activeKeystrokes = [];
 };
@@ -41,12 +40,9 @@ numberButtons.forEach(button => {
         if (operationFrozen) {
             display.textContent = ""
             operationFrozen = false;
-        }
-        // Wiping for new number
-        else if (+display.textContent === num1 && activeKeystrokes.length === 0) {
+        } else if (+display.textContent === num1 && activeKeystrokes.length === 0) {
             display.textContent = ""
-        }
-        else if (display.textContent === "Error") {
+        } else if (display.textContent === "Error") {
             display.textContent = ""
             num1 = undefined;
         }
@@ -62,8 +58,7 @@ equalsButton.addEventListener('click', () => {
     if (num1 === undefined) {
         num1 = "Error";
         display.textContent = num1;
-    }
-    else if (operationFrozen === false) {
+    } else if (operationFrozen === false) {
         result = performCalculation(num1);
         num1 = result; // If user performs new operation
     }
