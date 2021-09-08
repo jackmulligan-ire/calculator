@@ -18,21 +18,20 @@ const divide = (a,b) => {
     if (a % b === 0) return a / b
     else return (a / b).toFixed(2)   
 };
-const operate = (a, operator, b) => operator(a,b);
-const storeToMemory = (operation) => {
+const calculate = (a, operator, b) => {
+    let operationResult = operator(a,b);
+    display.textContent = operationResult;
+    operationFrozen = true;
+    return operationResult;
+}
+const updateMemory = (operation) => {
     if (num1 != undefined && num1 != +display.textContent) { //Chaining operations
-        result = performCalculation(num1);
-        num1 = result; // For new calc after equals pressed
+        num2 = +display.textContent;
+        operationResult = calculate(num1, currentOperation, num2);
+        num1 = operationResult; // For next calc if continuing to chain
     } else if (num1 === undefined) num1 = +display.textContent; //Very first number
     currentOperation = operation;
     activeKeystrokes = [];
-};
-const performCalculation = (num1) => {
-    num2 = +display.textContent;
-    result = operate(num1, currentOperation, num2);
-    display.textContent = result;
-    operationFrozen = true;
-    return result;
 };
 
 numberButtons.forEach(button => {
@@ -50,17 +49,18 @@ numberButtons.forEach(button => {
         activeKeystrokes.push(button.textContent);
     })
 })
-plusButton.addEventListener('click', () => storeToMemory(plus))
-subtractButton.addEventListener('click', () => storeToMemory(subtract))
-multiplyButton.addEventListener('click', () => storeToMemory(multiply))
-divideButton.addEventListener('click', () => storeToMemory(divide))
+plusButton.addEventListener('click', () => updateMemory(plus))
+subtractButton.addEventListener('click', () => updateMemory(subtract))
+multiplyButton.addEventListener('click', () => updateMemory(multiply))
+divideButton.addEventListener('click', () => updateMemory(divide))
 equalsButton.addEventListener('click', () => {
     if (num1 === undefined) {
         num1 = "Error";
         display.textContent = num1;
     } else if (operationFrozen === false) {
-        result = performCalculation(num1);
-        num1 = result; // If user performs new operation
+        num2 = +display.textContent;
+        operationResult = calculate(num1, currentOperation, num2);
+        num1 = operationResult; // For next operation after equals pressed
     }
     activeKeystrokes = [];
 })
