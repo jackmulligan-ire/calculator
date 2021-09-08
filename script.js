@@ -9,6 +9,7 @@ const equalsButton = document.querySelector("#equals")
 
 let num1, currentOperation, num2; 
 let activeKeystrokes = [];
+let operationFrozen = false;
 
 const plus = (a,b) => a + b;
 const subtract = (a,b) => a - b;
@@ -19,6 +20,7 @@ const storeToMemory = (operation) => {
     if (num1 != undefined && num1 != +display.textContent) { //Chaining operations
         num2 = +display.textContent;
         result = operate(num1, currentOperation, num2);
+        operationFrozen = true;
         num1 = result; // For new calc after equals pressed
         display.textContent = num1;
     }
@@ -29,9 +31,17 @@ const storeToMemory = (operation) => {
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Wiping for new number
-        if (+display.textContent === num1 && activeKeystrokes.length === 0) {
+        if (operationFrozen) {
             display.textContent = ""
+            operationFrozen = false;
+        }
+        // Wiping for new number
+        else if (+display.textContent === num1 && activeKeystrokes.length === 0) {
+            display.textContent = ""
+        }
+        else if (display.textContent === "Error") {
+            display.textContent = ""
+            num1 = undefined;
         }
         display.textContent += button.textContent;
         activeKeystrokes.push(button.textContent);
@@ -41,17 +51,27 @@ plusButton.addEventListener('click', () => storeToMemory(plus))
 subtractButton.addEventListener('click', () => storeToMemory(subtract))
 multiplyButton.addEventListener('click', () => storeToMemory(multiply))
 divideButton.addEventListener('click', () => storeToMemory(divide))
-equalsButton.addEventListener('click', () => {
-    num2 = +display.textContent
-    result = operate(num1, currentOperation, num2);
-    display.textContent = result;
-    num1 = result; // For new calc after equals pressed
-    activeKeystrokes = [];
 
+equalsButton.addEventListener('click', () => {
+    if (num1 === undefined) {
+        num1 = "Error";
+        display.textContent = num1;
+    }
+    else if (operationFrozen === false) {
+        num2 = +display.textContent
+        result = operate(num1, currentOperation, num2);
+        operationFrozen = true;
+        display.textContent = result;
+        num1 = result; // For new calc after equals pressed
+    }
+    activeKeystrokes = [];
 })
+
 clearButton.addEventListener('click', () => {
     display.textContent = "";
     num1 = undefined;
     num2 = undefined;
     currentOperation = undefined;
+    activeKeystrokes = [];
+    operationFrozen = false;
 })
