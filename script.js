@@ -9,7 +9,7 @@ const equalsButton = document.querySelector("#equals")
 
 let num1, currentOperation, num2; 
 let activeKeystrokes = [];
-let operationFrozen = false;
+let equalsFrozen = false;
 
 const plus = (a,b) => a + b;
 const subtract = (a,b) => a - b;
@@ -23,7 +23,7 @@ const divide = (a,b) => {
 const calculate = (a, operator, b) => {
     let operationResult = operator(a,b);
     display.textContent = operationResult;
-    operationFrozen = true;
+    equalsFrozen = true;
     return operationResult;
 }
 
@@ -44,9 +44,9 @@ divideButton.addEventListener('click', () => updateMemory(divide))
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (operationFrozen) {
+        if (equalsFrozen) {
             display.textContent = ""
-            operationFrozen = false;
+            equalsFrozen = false;
         } else if (+display.textContent === num1 && activeKeystrokes.length === 0) {
             display.textContent = ""
         } else if (display.textContent === "Error") {
@@ -62,7 +62,7 @@ equalsButton.addEventListener('click', () => {
     if (num1 === undefined) {
         num1 = "Error";
         display.textContent = num1;
-    } else if (operationFrozen === false) {
+    } else if (equalsFrozen === false) {
         num2 = +display.textContent;
         operationResult = calculate(num1, currentOperation, num2);
         num1 = operationResult; // For next operation after equals pressed
@@ -76,5 +76,5 @@ clearButton.addEventListener('click', () => {
     num2 = undefined;
     currentOperation = undefined;
     activeKeystrokes = [];
-    operationFrozen = false;
+    equalsFrozen = false;
 })
