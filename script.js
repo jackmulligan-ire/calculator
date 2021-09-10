@@ -38,7 +38,7 @@ const updateMemory = (operation) => {
     decimalFrozen = false;
 };
 
-const updateDisplay = (button) => {
+const addKeystroke = (button) => {
     if (button.getAttribute('id') != "decimal" && display.textContent.length < 16) {
         display.textContent += button.textContent;
         activeKeystrokes.push(button.textContent);
@@ -68,7 +68,7 @@ numberButtons.forEach(button => {
             display.textContent = ""
             num1 = undefined;
         }
-        updateDisplay(button)
+        addKeystroke(button)
     })
 })
 
