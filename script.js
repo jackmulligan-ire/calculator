@@ -15,13 +15,11 @@ let decimalFrozen = false;
 const plus = (a,b) => a + b;
 const subtract = (a,b) => a - b;
 const multiply = (a,b) => a * b;
-const divide = (a,b) => {
-    if (a % b === 0) return a / b
-    else return (a / b).toFixed(2)   
-};
+const divide = (a,b) => a / b ;
 
 const calculate = (a, operator, b) => {
     let operationResult = operator(a,b);
+    if (operationResult % 1 != 0) operationResult = operationResult.toFixed(2);
     display.textContent = operationResult;
     equalsFrozen = true;
     return operationResult;
