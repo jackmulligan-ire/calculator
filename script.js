@@ -19,6 +19,7 @@ const divide = (a,b) => a / b ;
 
 const calculate = (a, operator, b) => {
     let operationResult = operator(a,b);
+    if (operationResult > 9999999999999998) operationResult = 9999999999999998;
     if (operationResult % 1 != 0) operationResult = operationResult.toFixed(2);
     display.textContent = operationResult;
     equalsFrozen = true;
@@ -38,7 +39,7 @@ const updateMemory = (operation) => {
 };
 
 const updateDisplay = (button) => {
-    if (button.getAttribute('id') != "decimal") {
+    if (button.getAttribute('id') != "decimal" && display.textContent.length < 16) {
         display.textContent += button.textContent;
         activeKeystrokes.push(button.textContent);
     }
