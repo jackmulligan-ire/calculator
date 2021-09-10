@@ -19,7 +19,7 @@ const divide = (a,b) => a / b ;
 
 const calculate = (a, operator, b) => {
     let operationResult = operator(a,b);
-    if (operationResult > 9999999999999998) operationResult = 9999999999999998;
+    if (operationResult > 99999999999998) operationResult = 99999999999998;
     if (operationResult % 1 != 0) operationResult = operationResult.toFixed(2);
     display.textContent = operationResult;
     equalsFrozen = true;
@@ -39,7 +39,7 @@ const updateMemory = (operation) => {
 };
 
 const addKeystroke = (button) => {
-    if (button.getAttribute('id') != "decimal" && display.textContent.length < 16) {
+    if (button.getAttribute('id') != "decimal" && display.textContent.length < 14) {
         display.textContent += button.textContent;
         activeKeystrokes.push(button.textContent);
     }

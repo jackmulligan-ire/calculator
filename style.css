@@ -1,19 +1,35 @@
+body {
+    font-family: 'Glory', sans-serif;
+    margin: 35px;
+}
+
 #shell {
-    height: 450px;
+    height: 475px;
     width: 400px;
     padding: 10px;
     margin: auto;
-    background-color: cadetblue;
+    background-color: #50626b;
 }
 
 #display {
-    height: 15%;
+    height: 11%;
     width: 90%;
     margin: 5px auto;
     padding: 0 5px;
-    background-color: lightyellow;
+    padding-top: 4px;
+    background-color: #71bf97;
+    color: #05059cbf;
     text-align: end;
     font-size: 45px;
+}
+
+#brand {
+    text-align: right;
+    color: white;
+    margin-right: 15px;
+    margin-top: -6px;
+    font-family: 'Allison', cursive;
+    font-size: 27px;
 }
 
 #buttons {
@@ -22,19 +38,28 @@
     height: 78%;
     width: 95%;
     margin: auto;
-    margin-top: 15px;
-    background-color: lightsalmon;
-    font-size: 45px;
-    text-align: center;
+    margin-top: 8px;
 }
 
 .button {
     flex: 20%;
-    margin: 5px;
-    background-color: #a17aff;
-    border: 1px solid darkgreen;
+    margin: 2px;
+    padding-top: 9px;
+    background-color: #3734ecb8;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 45px;
+    color: white;
+    text-align: center;
 }
 
 .xl-button {
     flex: 45%;
+    background-color: #ff8843;
+    color: black;
+    font-weight: 700;
+}
+
+.number {
+    background-color: #0a0707ba;
 }
