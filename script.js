@@ -56,7 +56,7 @@ multiplyButton.addEventListener('click', () => updateMemory(multiply))
 divideButton.addEventListener('click', () => updateMemory(divide))
 
 numberButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (e) => {
         if (equalsFrozen) {
             display.textContent = ""
             equalsFrozen = false;
@@ -68,8 +68,13 @@ numberButtons.forEach(button => {
             display.textContent = ""
             num1 = undefined;
         }
+        button.classList.add("pressed");
         addKeystroke(button)
     })
+    button.addEventListener('transitionend', (e) => {
+        if (e.propertyName != "box-shadow") return
+        e.target.classList.remove("pressed");
+    });
 })
 
 equalsButton.addEventListener('click', () => {

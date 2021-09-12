@@ -51,6 +51,7 @@ body {
     font-size: 45px;
     color: white;
     text-align: center;
+    transition: all 0.2s;
 }
 
 .xl-button {
@@ -62,4 +63,8 @@ body {
 
 .number {
     background-color: #0a0707ba;
+}
+
+.pressed {
+    box-shadow: 0px 0px 10px 2px #afff5fc9;
 }
