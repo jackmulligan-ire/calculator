@@ -56,7 +56,7 @@ multiplyButton.addEventListener('click', () => updateMemory(multiply))
 divideButton.addEventListener('click', () => updateMemory(divide))
 
 numberButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', () => {
         if (equalsFrozen) {
             display.textContent = ""
             equalsFrozen = false;
