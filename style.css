@@ -1,6 +1,8 @@
 body {
     font-family: 'Glory', sans-serif;
     margin: 35px;
+    /* Adding black space background */
+    background-color: #021027;
 }
 
 #shell {
@@ -68,3 +70,55 @@ body {
 .pressed {
     box-shadow: 0px 0px 10px 2px #afff5fc9;
 }
+
+/* Stars declarations */
+.stars {
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    animation-iteration-count: infinite;
+}
+
+.stars-1 {
+    margin-left: 12%;
+    animation-duration: 15s;
+    animation-name: twinkle;
+}
+
+.stars-2 {
+    margin-left: 88%;
+    animation-duration: 3s;
+    animation-name: twinkle;
+}
+
+.stars-3 {
+    margin-left: 48%;
+}
+
+.stars-4 {
+    margin-left: 3%;
+    animation-duration: 10s;
+    animation-name: twinkle;
+}
+
+.stars-5 {
+    margin-left: 95%;
+    animation-duration: 7s;
+    animation-name: twinkle;
+}
+
+#row-above {
+    margin-bottom: 2%;
+}
+
+#row-below {
+    margin-top: 5%;
+}
+
+@keyframes twinkle {
+    20% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+  }
