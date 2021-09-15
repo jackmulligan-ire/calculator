@@ -74,14 +74,14 @@ body {
 /* Stars declarations */
 .stars {
     background-color: white;
-    height: 15px;
-    width: 15px;
+    height: 3px;
+    width: 3px;
     border-radius: 50%;
     animation-iteration-count: infinite;
 }
 
 .stars-1 {
-    margin-left: 12%;
+    margin-left: 19%;
     animation-duration: 15s;
     animation-name: twinkle;
 }
@@ -93,7 +93,7 @@ body {
 }
 
 .stars-3 {
-    margin-left: 48%;
+    margin-left: 94%;
 }
 
 .stars-4 {
@@ -103,17 +103,37 @@ body {
 }
 
 .stars-5 {
-    margin-left: 95%;
-    animation-duration: 7s;
-    animation-name: twinkle;
+    margin-left: 41%;
+    height: 20px;
+    width: 20px;
+    background-color: #ff5555;
 }
 
-#row-above {
+.stars-6 {
+    margin-left: 65%;
+    height: 8px;
+    width: 8px;
+    background-color: yellow;
+}
+
+.stars-7 {
+    margin-left: 88%;
+    animation-duration: 3s;
+    animation-name: twinkle;
+    height: 5px;
+    width: 5px;
+}
+
+#stars-above {
     margin-bottom: 2%;
 }
 
-#row-below {
+#stars-below {
     margin-top: 5%;
+    height: 90px;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
 }
 
 @keyframes twinkle {
