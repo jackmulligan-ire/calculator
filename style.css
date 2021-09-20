@@ -5,9 +5,18 @@ body {
     background-color: #021027;
 }
 
+#main {
+    display: flex;
+}
+
+#stars-left, #stars-right {
+    width: 20%;
+}
+
 #shell {
     height: 475px;
-    width: 400px;
+    width: 60%;
+    max-width: 375px;
     padding: 10px;
     margin: auto;
     background-color: #50626b;
@@ -50,7 +59,7 @@ body {
     background-color: #3734ecb8;
     border: 1px solid black;
     border-radius: 10px;
-    font-size: 45px;
+    font-size: 43px;
     color: white;
     text-align: center;
     transition: all 0.2s;
