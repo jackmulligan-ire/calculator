@@ -6,6 +6,11 @@ const subtractButton = document.querySelector("#subtract");
 const multiplyButton = document.querySelector("#multiply");
 const divideButton = document.querySelector("#divide");
 const equalsButton = document.querySelector("#equals")
+// Getting starsBelow as a div
+const starsAbove = document.querySelector("#stars-above");
+const starsBelow = document.querySelector("#stars-below");
+const starsLeft = document.querySelector("#stars-left");
+const starsRight = document.querySelector('#stars-right');
 
 let num1, currentOperation, num2; 
 let activeKeystrokes = [];
@@ -100,3 +105,32 @@ clearButton.addEventListener('click', () => {
     equalsFrozen = false;
     decimalFrozen = false;
 })
+
+// Write a fn fillBottom w/ param numOfStars, starsDiv
+const fillStars = (numOfStars, starsDiv) => {
+    // Declare var star, ranValue
+    let star, ranValue;
+    // Loop, with initial = 0, loops as long as i < numOfStars, i++
+    for (i=0; i < numOfStars; i++) {
+        // Assign star the creation of a div
+        star = document.createElement('div')
+        // Add the class stars to star
+        star.classList.add('stars')
+        // Generate a ranValue, round this to nearest whole number.
+        ranValue = Math.floor(Math.random()*100)
+        // Set declaration for margin-left of star to be ranValue
+        star.style.marginLeft = `${ranValue}%`
+        // If i is divisible 7, also add class pulse
+        if (i % 7 === 0) star.classList.add('pulse') 
+        // If I is divisible by 10, also add twinkle
+        if (i % 10 === 0) star.classList.add('twinkle')
+        // Append star to the container
+        starsDiv.appendChild(star)
+    }
+}
+
+// Call fillBottom w 10 as arg
+fillStars(30, starsAbove)
+fillStars(50, starsBelow)
+fillStars(250, starsLeft)
+fillStars(250, starsRight)
