@@ -130,7 +130,7 @@ const fillStars = (numOfStars, starsDiv) => {
 }
 
 // Call fillBottom w 10 as arg
-fillStars(30, starsAbove)
-fillStars(50, starsBelow)
+fillStars(50, starsAbove)
+fillStars(100, starsBelow)
 fillStars(250, starsLeft)
 fillStars(250, starsRight)

@@ -1,16 +1,28 @@
+/* Structure divs */
 body {
     font-family: 'Glory', sans-serif;
     margin: 2px;
-    /* Adding black space background */
     background-color: #021027;
+    height: 100vh;
 }
 
 #main {
     display: flex;
 }
 
+#stars-above {
+    height: 15%
+}
+
+#stars-below {
+    display: flex;
+    flex-direction: column;
+    height: 20%
+}
+
 #stars-left, #stars-right {
     width: 20%;
+    flex-grow: 1;
 }
 
 #shell {
@@ -18,10 +30,10 @@ body {
     width: 60%;
     max-width: 375px;
     padding: 10px;
-    margin: auto;
     background-color: #50626b;
 }
 
+/* Calculator design */
 #display {
     height: 11%;
     width: 90%;
@@ -88,7 +100,7 @@ body {
     border-radius: 50%;
     animation-iteration-count: infinite;
 }
-/* New twinkle classes */
+
 .pulse {
     animation-duration: 3s;
     animation-name: twinkle;
@@ -97,18 +109,6 @@ body {
 .twinkle {
     animation-duration: 1s;
     animation-name: twinkle;  
-}
-
-#stars-above {
-    margin-bottom: 2%;
-}
-
-#stars-below {
-    margin-top: 5%;
-    height: 90px;
-    flex-direction: column;
-    display: flex;
-    justify-content: space-between;
 }
 
 @keyframes twinkle {
