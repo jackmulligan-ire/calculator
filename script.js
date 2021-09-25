@@ -1,4 +1,8 @@
+// Get body and store in variable body
+const body = document.querySelector("body");
 const display = document.querySelector("#display");
+// Get shell and store in variable shell
+const shell = document.querySelector("#shell");
 const numberButtons = document.querySelectorAll(".number");
 const clearButton = document.querySelector("#clear");
 const plusButton = document.querySelector("#plus");
@@ -20,7 +24,11 @@ let decimalFrozen = false;
 const plus = (a,b) => a + b;
 const subtract = (a,b) => a - b;
 const multiply = (a,b) => a * b;
-const divide = (a,b) => a / b ;
+const divide = (a,b) => {
+    // If user dividing by 0, destroy space
+    if (b === 0) destroySpace()
+    else return a / b
+};
 
 const calculate = (a, operator, b) => {
     let operationResult = operator(a,b);
@@ -55,6 +63,16 @@ const addKeystroke = (button) => {
     }
 };
 
+// Destroy space fn
+const destroySpace = () => {
+    // Change color of shell to be red
+    // shell.style.backgroundColor = "#660000"
+    // Set bg-color of body to white
+    body.style.backgroundColor = "white"
+    // Set text content of the display to "DESTORY!"
+    display.textContent = "DESTROYED"
+}
+
 plusButton.addEventListener('click', () => updateMemory(plus))
 subtractButton.addEventListener('click', () => updateMemory(subtract))
 multiplyButton.addEventListener('click', () => updateMemory(multiply))
@@ -69,7 +87,8 @@ numberButtons.forEach(button => {
         else if (+display.textContent === num1 && activeKeystrokes.length === 0) {
             display.textContent = ""
         } 
-        else if (display.textContent === "Error") {
+        // Adding in case of evil mode
+        else if (display.textContent === "DESTROYED" || display.textContent === "EVIL MODE") {
             display.textContent = ""
             num1 = undefined;
         }
@@ -84,7 +103,7 @@ numberButtons.forEach(button => {
 
 equalsButton.addEventListener('click', () => {
     if (num1 === undefined) {
-        num1 = "Error";
+        num1 = "ERROR";
         display.textContent = num1;
     } 
     else if (equalsFrozen === false) {

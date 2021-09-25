@@ -4,6 +4,8 @@ body {
     margin: 2px;
     background-color: #021027;
     height: 100vh;
+    /* Setting transition for space destruction */
+    transition: all 3s;
 }
 
 #main {
@@ -26,11 +28,12 @@ body {
 }
 
 #shell {
-    height: 475px;
+    height: 525px;
     width: 60%;
     max-width: 375px;
     padding: 10px;
     background-color: #50626b;
+    transition: all 1s;
 }
 
 /* Calculator design */
@@ -55,6 +58,21 @@ body {
     font-size: 27px;
 }
 
+/* New CSS class for warning */
+#warning {
+    margin-left: 63%;
+    margin-top: 2px;
+    border-radius: 3px;
+    border: 1px solid #a7b6bd;
+    width: 32%;
+    height: 10px;
+    padding: 1px;
+    padding-left: 3px;
+    color: #FFF;
+    background: #809aa7;
+    font-size: 10px;
+}
+
 #buttons {
     display: flex;
     flex-wrap: wrap;
@@ -67,7 +85,7 @@ body {
 .button {
     flex: 20%;
     margin: 2px;
-    padding-top: 9px;
+    padding-top: 14px;
     background-color: #3734ecb8;
     border: 1px solid black;
     border-radius: 10px;
