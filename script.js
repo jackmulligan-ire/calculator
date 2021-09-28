@@ -8,6 +8,8 @@ const subtractButton = document.querySelector("#subtract");
 const multiplyButton = document.querySelector("#multiply");
 const divideButton = document.querySelector("#divide");
 const equalsButton = document.querySelector("#equals")
+// Get the delete button, store in const deleteButton
+const deleteButton = document.querySelector("#delete");
 const starsAbove = document.querySelector("#stars-above");
 const starsBelow = document.querySelector("#stars-below");
 const starsLeft = document.querySelector("#stars-left");
@@ -17,6 +19,8 @@ let num1, currentOperation, num2;
 let activeKeystrokes = [];
 let equalsFrozen = false;
 let decimalFrozen = false;
+// Define a boolean variable deleteFrozen, set initial value to false
+let deleteFrozen = false;
 
 const plus = (a,b) => a + b;
 const subtract = (a,b) => a - b;
@@ -32,6 +36,8 @@ const calculate = (a, operator, b) => {
     if (operationResult % 1 != 0) operationResult = operationResult.toFixed(2);
     display.textContent = operationResult;
     equalsFrozen = true;
+    // Set the deleteFrozen variable to be true
+    deleteFrozen = true;
     return operationResult;
 };
 
@@ -113,6 +119,21 @@ clearButton.addEventListener('click', () => {
     activeKeystrokes = [];
     equalsFrozen = false;
     decimalFrozen = false;
+    // Adding deleteFrozen to things that get deleted
+    deleteFrozen = false;
+})
+
+// Event listener for delete button
+// Click event is registered on the DEL button 
+deleteButton.addEventListener('click', () => {
+    // NEW: If statement that tests whether deleteFrozen is deactivated
+    if (deleteFrozen === false) {
+        // Call slice on the text content of the display
+        // from index 0 to the length of the string – 1, store in a variable editedNumber
+        let editedNumber = display.textContent.slice(0, display.textContent.length - 1);
+        // Put this editedNumber into the textContent of the display.
+        display.textContent = editedNumber;
+    }
 })
 
 const fillStars = (numOfStars, starsDiv) => {
