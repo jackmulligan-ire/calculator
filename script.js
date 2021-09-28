@@ -1,7 +1,5 @@
-// Get body and store in variable body
 const body = document.querySelector("body");
 const display = document.querySelector("#display");
-// Get shell and store in variable shell
 const shell = document.querySelector("#shell");
 const numberButtons = document.querySelectorAll(".number");
 const clearButton = document.querySelector("#clear");
@@ -10,7 +8,6 @@ const subtractButton = document.querySelector("#subtract");
 const multiplyButton = document.querySelector("#multiply");
 const divideButton = document.querySelector("#divide");
 const equalsButton = document.querySelector("#equals")
-// Getting starsBelow as a div
 const starsAbove = document.querySelector("#stars-above");
 const starsBelow = document.querySelector("#stars-below");
 const starsLeft = document.querySelector("#stars-left");
@@ -25,7 +22,6 @@ const plus = (a,b) => a + b;
 const subtract = (a,b) => a - b;
 const multiply = (a,b) => a * b;
 const divide = (a,b) => {
-    // If user dividing by 0, destroy space
     if (b === 0) destroySpace()
     else return a / b
 };
@@ -63,13 +59,8 @@ const addKeystroke = (button) => {
     }
 };
 
-// Destroy space fn
 const destroySpace = () => {
-    // Change color of shell to be red
-    // shell.style.backgroundColor = "#660000"
-    // Set bg-color of body to white
     body.style.backgroundColor = "white"
-    // Set text content of the display to "DESTORY!"
     display.textContent = "DESTROYED"
 }
 
@@ -87,8 +78,7 @@ numberButtons.forEach(button => {
         else if (+display.textContent === num1 && activeKeystrokes.length === 0) {
             display.textContent = ""
         } 
-        // Adding in case of evil mode
-        else if (display.textContent === "DESTROYED" || display.textContent === "EVIL MODE") {
+        else if (display.textContent === "DESTROYED") {
             display.textContent = ""
             num1 = undefined;
         }
@@ -125,30 +115,19 @@ clearButton.addEventListener('click', () => {
     decimalFrozen = false;
 })
 
-// Write a fn fillBottom w/ param numOfStars, starsDiv
 const fillStars = (numOfStars, starsDiv) => {
-    // Declare var star, ranValue
     let star, ranValue;
-    // Loop, with initial = 0, loops as long as i < numOfStars, i++
     for (i=0; i < numOfStars; i++) {
-        // Assign star the creation of a div
         star = document.createElement('div')
-        // Add the class stars to star
         star.classList.add('stars')
-        // Generate a ranValue, round this to nearest whole number.
         ranValue = Math.floor(Math.random()*100)
-        // Set declaration for margin-left of star to be ranValue
         star.style.marginLeft = `${ranValue}%`
-        // If i is divisible 7, also add class pulse
         if (i % 7 === 0) star.classList.add('pulse') 
-        // If I is divisible by 10, also add twinkle
         if (i % 10 === 0) star.classList.add('twinkle')
-        // Append star to the container
         starsDiv.appendChild(star)
     }
 }
 
-// Call fillBottom w 10 as arg
 fillStars(50, starsAbove)
 fillStars(100, starsBelow)
 fillStars(250, starsLeft)
