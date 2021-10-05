@@ -1,32 +1,16 @@
-/* Structure divs */
 body {
-    font-family: 'Glory', sans-serif;
     margin: 2px;
-    background-color: #021027;
     height: 100vh;
-    /* Setting transition for space destruction */
+    background-color: #021027;
+    font-family: 'Glory', sans-serif;
     transition: all 3s;
 }
 
-#main {
+main {
     display: flex;
 }
 
-#stars-above {
-    height: 15%
-}
-
-#stars-below {
-    display: flex;
-    flex-direction: column;
-    height: 20%
-}
-
-#stars-left, #stars-right {
-    width: 20%;
-    flex-grow: 1;
-}
-
+/* Calculator */
 #shell {
     height: 525px;
     width: 60%;
@@ -36,7 +20,6 @@ body {
     transition: all 1s;
 }
 
-/* Calculator design */
 #display {
     height: 10%;
     width: 90%;
@@ -50,15 +33,14 @@ body {
 }
 
 #brand {
-    text-align: right;
-    color: white;
     margin-right: 15px;
     margin-top: -6px;
+    color: white;
     font-family: 'Allison', cursive;
     font-size: 27px;
+    text-align: right;
 }
 
-/* New CSS class for warning */
 #warning {
     margin-left: 63%;
     margin-top: 2px;
@@ -73,7 +55,6 @@ body {
     text-align: center;
 }
 
-/* Media query for warning */
 @media (max-width: 650px) {
     #warning {
         height: 9px;
@@ -107,11 +88,11 @@ body {
     flex: 20%;
     margin: 2px;
     padding-top: 14px;
-    background-color: #3734ecb8;
     border: 1px solid black;
     border-radius: 10px;
-    font-size: 43px;
+    background-color: #3734ecb8;
     color: white;
+    font-size: 43px;
     text-align: center;
     transition: all 0.2s;
 }
@@ -131,17 +112,27 @@ body {
     box-shadow: 0px 0px 10px 2px #afff5fc9;
 }
 
-/* new operator pressed class */
-.operator-pressed {
-    box-shadow: 0px 0px 2px 2px #ccc;
+/* Stars */
+#stars-above {
+    height: 15%
 }
 
-/* Stars declarations */
+#stars-below {
+    display: flex;
+    flex-direction: column;
+    height: 20%
+}
+
+#stars-left, #stars-right {
+    width: 20%;
+    flex-grow: 1;
+}
+
 .stars {
-    background-color: white;
     height: 2px;
     width: 2px;
     border-radius: 50%;
+    background-color: white;
     animation-iteration-count: infinite;
 }
 
@@ -160,4 +151,4 @@ body {
       transform: scale(0.9);
       opacity: 0.5;
     }
-  }
+}
