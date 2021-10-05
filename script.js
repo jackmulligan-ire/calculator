@@ -1,4 +1,10 @@
 const body = document.querySelector("body");
+//Background
+const starsAbove = document.querySelector("#stars-above");
+const starsBelow = document.querySelector("#stars-below");
+const starsLeft = document.querySelector("#stars-left");
+const starsRight = document.querySelector('#stars-right');
+//Calculator
 const display = document.querySelector("#display");
 const shell = document.querySelector("#shell");
 const numberButtons = document.querySelectorAll(".number");
@@ -9,10 +15,6 @@ const multiplyButton = document.querySelector("#multiply");
 const divideButton = document.querySelector("#divide");
 const equalsButton = document.querySelector("#equals")
 const deleteButton = document.querySelector("#delete");
-const starsAbove = document.querySelector("#stars-above");
-const starsBelow = document.querySelector("#stars-below");
-const starsLeft = document.querySelector("#stars-left");
-const starsRight = document.querySelector('#stars-right');
 
 let num1, currentOperation, num2; 
 let activeKeystrokes = [];
@@ -60,11 +62,6 @@ const addKeystroke = (button) => {
         activeKeystrokes.push(button.textContent);
         decimalFrozen = true;
     }
-};
-
-const destroySpace = () => {
-    body.style.backgroundColor = "white";
-    display.textContent = "DESTROYED";
 };
 
 plusButton.addEventListener('click', () => updateMemory(plus))
@@ -127,6 +124,11 @@ deleteButton.addEventListener('click', () => {
     }
 })
 
+const destroySpace = () => {
+    body.style.backgroundColor = "white";
+    display.textContent = "DESTROYED";
+};
+
 const fillStars = (numOfStars, starsDiv) => {
     let star, ranValue;
     for (i=0; i < numOfStars; i++) {
@@ -139,7 +141,6 @@ const fillStars = (numOfStars, starsDiv) => {
         starsDiv.appendChild(star)
     }
 }
-
 fillStars(50, starsAbove)
 fillStars(100, starsBelow)
 fillStars(250, starsLeft)
