@@ -13,6 +13,8 @@ const starsAbove = document.querySelector("#stars-above");
 const starsBelow = document.querySelector("#stars-below");
 const starsLeft = document.querySelector("#stars-left");
 const starsRight = document.querySelector('#stars-right');
+// Get a nodelist of all elements with class operator
+const operatorButtons = document.querySelectorAll(".operator");
 
 let num1, currentOperation, num2; 
 let activeKeystrokes = [];
@@ -126,6 +128,14 @@ deleteButton.addEventListener('click', () => {
         display.textContent = editedNumber;
     }
 })
+
+// Foreach call on operatorButtons. For button
+// Add an event listener for click
+operatorButtons.forEach(button => button.addEventListener('click', () => {
+        // On click, add the operator-pressed class
+        button.classList.add("operator-pressed")
+    })
+)
 
 const fillStars = (numOfStars, starsDiv) => {
     let star, ranValue;

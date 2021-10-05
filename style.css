@@ -131,6 +131,11 @@ body {
     box-shadow: 0px 0px 10px 2px #afff5fc9;
 }
 
+/* new operator pressed class */
+.operator-pressed {
+    box-shadow: 0px 0px 2px 2px #ccc;
+}
+
 /* Stars declarations */
 .stars {
     background-color: white;
